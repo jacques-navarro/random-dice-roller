@@ -1,17 +1,16 @@
 <template>
   <Main />
   <button @click="roll">Roll Dice</button>
-  <div>
-    <span v-if="showDie">{{ die1 }} {{ die2 }}</span>
-  </div>
+  <Dice class="center" v-if="showDie" :die1="die1" :die2="die2" />
 </template>
 
 <script>
 import Main from "./components/Main.vue";
+import Dice from "./components/Dice.vue";
 
 export default {
   name: "App",
-  components: { Main },
+  components: { Main, Dice },
 
   data() {
     return {
@@ -29,6 +28,9 @@ export default {
     roll() {
       this.die1 = this.getRandom();
       this.die2 = this.getRandom();
+
+      console.log(`${this.die1} ${this.die2}`);
+
       this.showDie = true;
     },
   },
